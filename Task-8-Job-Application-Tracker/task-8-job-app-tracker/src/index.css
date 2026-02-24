@@ -1,0 +1,23 @@
+/* =========================================
+   GLOBAL VARIABLES & RESETS
+   ========================================= */
+:root {
+  /* Here we save your preferred color palette as variables */
+  --navy-dark: #0f172a;
+  --grey-light: #f8fafc;
+  --blue-grey: #cbd5e1;
+  --text-main: #0f172a;
+  --blue-accent: #3b82f6;
+}
+
+/* This is a pro-tip: It makes sure padding doesn't mess up your width calculations */
+* {
+  box-sizing: border-box;
+}
+
+body { 
+  background-color: var(--grey-light); 
+  font-family: system-ui, sans-serif; 
+  color: var(--text-main); 
+  margin: 0; 
+}
