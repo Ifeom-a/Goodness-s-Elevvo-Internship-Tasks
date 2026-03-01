@@ -40,36 +40,49 @@
             </div>
         </div>
     </div>
-
 <script>
-    // 1. Grab the form element
+// --- JAVASCRIPT code ---
+    
+    // 1. Hook into the form element on the page so we can control what happens when it's submitted
     const contactForm = document.querySelector('form');
 
+    // Listen for the exact moment the user clicks the "Submit" button
     contactForm.addEventListener('submit', function(e) {
-        // Prevent the page from refreshing immediately
+        
+        // e.preventDefault() stops the page from doing its default reload. 
+        // This lets us check the data first before anything else happens.
         e.preventDefault();
 
-        // 2. Get the values from the inputs
+        // 2. Grab exactly what the user typed into the input boxes using their IDs
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
 
-        // 3. Simple Validation Logic
+        // 3. Simple Front-End Validation
+        // If any of the essential fields are empty, we stop and warn the user.
         if (name === "" || email === "" || message === "") {
             alert("Oops! Please fill in all the required fields.");
-            return;
+            // 'return' kicks us out of this function immediately so the form doesn't process
+            return; 
         }
 
-        // 4. Basic Email Format Check (Regex)
+        // 4. Basic Email Format Check
+        // This is a Regular Expression (Regex). It checks if the email follows a basic "text@text.domain" pattern.
+        // It's a solid first line of defense to ensure the input actually looks like an email.
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        // If the typed email doesn't match the pattern, warn them and stop.
         if (!emailPattern.test(email)) {
             alert("Please enter a valid email address.");
             return;
         }
 
-        // If everything is fine
+        // 5. Success State
+        // If the code makes it this far, all our checks passed.
         alert("Success! Your message has been sent (simulated).");
-        contactForm.reset(); // Clears the form
+        
+        // Wipes the form clean so it's ready for the next person
+        contactForm.reset(); 
     });
 </script>
 
